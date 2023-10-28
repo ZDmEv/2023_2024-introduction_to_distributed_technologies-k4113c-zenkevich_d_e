@@ -8,7 +8,7 @@ Lab: Lab1 \
 Date of create: 25.10.2023 \
 Date of finished: <none>
 
-#Настройка окружения
+# Настройка окружения
 В первую очередь необходимо установить docker и minikube.
 Проверяем что docker и minikube установились с помощью команд:
 
@@ -30,32 +30,35 @@ Date of finished: <none>
 
 ![Рисунок 3](../lab1/source/docker-images.png)
 
-#Запуск minikube
+# Запуск minikube
 Стартуем minikube с помощью команды:
 
 ``minikube start``
 
 ![Рисунок 4](../lab1/source/minikube-start.png)
 
+# Создание пода
 Чтобы создать под применяем манифест с помощью команды:
 
 ``minikube kubectl -- apply -f vault-manifest.yaml``
 
 ![Рисунок 5](../lab1/source/kubectl-apply.png)
 
-Создаем сервис для доступа к созданному контенеру с помощью команды:
+# Создание сервиса
+Создадим сервис для доступа к созданному контенеру с помощью команды:
 
 ``minikube kubectl -- expose pod vault --type=NodePort --port=8200``
 
 ![Рисунок 6](../lab1/source/kubectl-expose.png)
 
+# Доступ к поду
 Прокинем порт компьютера в контейнер с помощью команды:
 
 ``minikube kubectl -- port-forward service/vault 8200:8200``
 
 ![Рисунок 7](../lab1/source/kubectl-port-forward.png)
 
-Попробуем подключиться к нашему развернутому сервису по адресу:
+Попробуем подключиться к контейнеру по адресу:
 
 ``http://localhost:8200``
 
