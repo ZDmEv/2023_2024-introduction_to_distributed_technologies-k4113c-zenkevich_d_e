@@ -14,4 +14,62 @@ Date of finished: <none>
 
 `` docker --version ``
 
-[Рисунок 1](../lab1/source/docker-images.png)
+![Рисунок 1](../lab1/source/docker-version.png)
+
+`` minikube version ``
+
+![Рисунок 2](../lab1/source/minikube-version.png)
+
+Далее скачиваем image докер-контейнера с помощью команды:
+
+`` docker pull vault:1.13.3  ``
+
+Проверяем, что image установился с помощью команды:
+
+`` docker images  ``
+
+![Рисунок 3](../lab1/source/docker-images.png)
+
+#Запуск minikube
+Стартуем minikube с помощью команды:
+
+``minikube start``
+
+![Рисунок 4](../lab1/source/minikube-start.png)
+
+Чтобы создать под применяем манифест с помощью команды:
+
+``minikube kubectl -- apply -f vault-manifest.yaml``
+
+![Рисунок 5](../lab1/source/kubectl-apply.png)
+
+Создаем сервис для доступа к созданному контенеру с помощью команды:
+
+``minikube kubectl -- expose pod vault --type=NodePort --port=8200``
+
+![Рисунок 6](../lab1/source/kubectl-expose.png)
+
+Прокинем порт компьютера в контейнер с помощью команды:
+
+``minikube kubectl -- port-forward service/vault 8200:8200``
+
+![Рисунок 7](../lab1/source/kubectl-port-forward.png)
+
+Попробуем подключиться к нашему развернутому сервису по адресу:
+
+``http://localhost:8200``
+
+![Рисунок 8](../lab1/source/auth-page.png)
+
+Найдем root-token в логах для аутентификации с помощью команды:
+
+``minikube kubectl -- logs vault``
+
+![Рисунок 9](../lab1/source/root-token.png)
+
+Теперь можно зайти в приложение:
+
+![Рисунок 10](../lab1/source/auth-success-page.png)
+
+
+
