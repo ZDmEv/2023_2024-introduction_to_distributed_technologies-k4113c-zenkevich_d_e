@@ -74,5 +74,14 @@ Date of finished: <none>
 
 ![Рисунок 10](../lab1/source/auth-success-page.png)
 
+# Остановка кластера
 
+Для остановки кластера воспользуемся командой:
 
+``minikube stop``
+
+![Рисунок 10](../lab1/source/minikube-stop.png)
+
+# Диаграмма системы
+
+![Рисунок 12](../lab1/source/system-diagram.png)
