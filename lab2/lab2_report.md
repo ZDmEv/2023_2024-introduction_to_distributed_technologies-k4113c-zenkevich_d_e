@@ -62,6 +62,10 @@ minikube kubectl -- expose deployment/lab2 --type=NodePort --port=3000
 
 ![Рисунок 6](../lab2/source/expose.png)
 
+# Проверка работы
+
+Пробросим порт с помощью команды:
+
 ```bash
 minikube kubectl -- port-forward service/lab2 8200:3000
 ```
@@ -89,3 +93,6 @@ minikube kubectl -- logs lab2-797d8c498f-xwdcg
 
 ![Рисунок 10](../lab2/source/logs-1.png)
 
+# Диаграмма
+
+![Рисунок 10](../lab2/source/diagram.png)
