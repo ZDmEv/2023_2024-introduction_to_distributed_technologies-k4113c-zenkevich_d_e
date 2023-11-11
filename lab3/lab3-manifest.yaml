@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-config
+data:
+  REACT_APP_USERNAME: Dmitrii_Zenkevich
+  REACT_APP_COMPANY_NAME: ITMO
+  
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab3
+  labels:
+    app: lab3
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lab3
+  template:
+    metadata:
+      labels:
+        app: lab3
+    spec:
+      containers:
+        - name: lab3
+          image: ifilyaninitmo/itdt-contained-frontend:master
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: env-config
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab3
+spec:
+  selector:
+    app: lab3
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 3000
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lab3
+spec:
+  rules:
+    - host: dmitrii.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: lab3
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - dmitrii.com
+      secretName: tls-secret
