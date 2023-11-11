@@ -6,7 +6,7 @@ Group: K4113с \
 Author: Zenkevich Dmitrii Evgenyevich \
 Lab: Lab1 \
 Date of create: 25.10.2023 \
-Date of finished: <none>
+Date of finished: 09.11.2023
 
 # Настройка окружения
 В первую очередь необходимо установить docker и minikube.

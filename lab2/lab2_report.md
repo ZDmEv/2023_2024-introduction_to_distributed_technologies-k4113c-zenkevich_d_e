@@ -6,7 +6,7 @@ Group: K4113с \
 Author: Zenkevich Dmitrii Evgenyevich \
 Lab: Lab2 \
 Date of create: 31.10.2023 \
-Date of finished: <none>
+Date of finished: 09.11.2023
 
 # Скачивание image контейнера
 Для скачивания image воспользуемся командой:
