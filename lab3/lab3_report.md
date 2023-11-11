@@ -114,3 +114,5 @@ minikube tunnel
 ![Рисунок 7](../lab3/source/my-cert.png)
 
 # Схема 
+
+![Рисунок 8](../lab3/source/diagramm.png)
