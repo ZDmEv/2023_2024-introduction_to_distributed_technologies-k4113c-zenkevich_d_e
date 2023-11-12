@@ -79,7 +79,7 @@ minikube kubectl -- apply -f lab3-manifest.yaml
 
 # Подключение к приложению
 
-Первым делом необходимо смаппить ip, по которому доступен ingress с нашем доменным именем.
+Первым делом необходимо смаппить ip, по которому доступен ingress с нашим доменным именем.
 Для этого нужно прописать в файле hosts следующее (работа ведется из консоли git bash, консоль нужно открыть
 от имени администратора):
 
@@ -87,7 +87,7 @@ minikube kubectl -- apply -f lab3-manifest.yaml
 echo "127.0.0.1 dmitrii.com" | tee -a /c/Windows/System32/drivers/etc/hosts
 ```
 
-Поскольку я работаю в os windows, для доступа к ingress необходимо использовать команду:
+Поскольку работа ведется в os windows, для доступа к ingress необходимо использовать команду:
 
 ```bash
 minikube tunnel
