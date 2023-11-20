@@ -5,23 +5,8 @@ Year: 2023/2024 \
 Group: K4113с \
 Author: Zenkevich Dmitrii Evgenyevich \
 Lab: Lab4 \
-Date of create: <none> \
+Date of create: 11.11.2023 \
 Date of finished: <none>
-
-```bash
-minikube start --network-plugin=cni --cni=calico --nodes 2 --driver=docker --no-vtx-check
-minikube kubectl -- get pods -l k8s-app=calco-node -A
-kubectl exec -i -n kube-system calicoctl -- /calicoctl get ippool --allow-version-mismatch
-kubectl exec -i -n kube-system calicoctl -- /calicoctl delete ippools default-ipv4-ippool --allow-version-mismatch
-kubectl label nodes minikube name=spb
-kubectl label nodes minikube-m02 name=msk
-kubectl exec -i -n kube-system calicoctl -- /calicoctl apply -f - < calico.yaml --allow-version-mismatch
-
-```
-
-https://github.com/kitok07/2023_2024-introduction_to_distributed_technologies-K4111c-sulimenko_n_s/blob/main/lab4/lab4_report.md
-https://github.com/Mrtrieu69/2023_2024-introduction_to_distributed_technologies-k4111c-trieu_t_m/blob/main/lab4/lab4.md
-https://github.com/kirillmega000/introduction_to_distributed_technologies_2022_2023-i-k4112c-petuhov_k_a/blob/master/lab4/report.md
 
 # Создание двухнодового кластера
 Поскольку устал мучиться с git bash - переезжаем в консоль shell
@@ -34,6 +19,8 @@ minikube start --network-plugin=cni --cni=calico --nodes 2 --driver=docker --no-
 ```
 
 ![Рисунок 1](../lab4/source/start.png)
+
+# Конфигурация calico
 
 Конфигурируем calico с помощью манифеста:
 
@@ -79,6 +66,8 @@ kubectl label nodes minikube name=spb
 kubectl label nodes minikube-m02 name=msk
 ```
 ![Рисунок 4](../lab4/source/lables.png)
+
+# Создание манифеста Configmap, Deployment и Service
 
 Создадим и применим манифест конфигмапы, деплоймента и сервиса
 
@@ -154,7 +143,9 @@ kubectl exec -i -n kube-system calicoctl -- /calicoctl get ippool -o wide   --al
 
 ![Рисунок 6](../lab4/source/ippool-info.png)
 
-Пробрасваем порт:
+# Доступ к сервису
+
+Пробрасываем порт:
 
 ```bash
 kubectl port-forward service/web-server-service-2 8080:8080
@@ -173,6 +164,6 @@ ping 192.168.0.64
 
 ![Рисунок 8](../lab4/source/ping.png)
 
-Диаграмма
+# Диаграмма
 
 ![Рисунок 9](../lab4/source/diagramm.png)
