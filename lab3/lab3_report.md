@@ -6,7 +6,7 @@ Group: K4113с \
 Author: Zenkevich Dmitrii Evgenyevich \
 Lab: Lab3 \
 Date of create: 01.11.23 \
-Date of finished: <none>
+Date of finished: 16.11.23
 
 # Создание ConfigMap, Deployment и Service
 
